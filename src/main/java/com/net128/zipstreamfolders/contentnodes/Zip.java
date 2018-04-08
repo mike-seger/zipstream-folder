@@ -1,5 +1,6 @@
 package com.net128.zipstreamfolders.contentnodes;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.zip.ZipEntry;
@@ -23,9 +24,10 @@ public class Zip {
 				new ContentNode("c3"));
 		ResourceNode resourceNode=new ResourceNode(ZipstreamFoldersApplication.class.getPackage().getName()+".data", ".*\\.txt$");
 		contentNode.add(resourceNode);
-		String zipFile = "/tmp/archive.zip";
+		File zipFile = new File(System.getProperty("java.io.tmpdir"), "archive.zip");
 
 		try {
+			System.out.println("Creating zip file: "+zipFile.getAbsolutePath());
 			FileOutputStream fos = new FileOutputStream(zipFile);
 			ZipOutputStream zos = new ZipOutputStream(fos);
 
