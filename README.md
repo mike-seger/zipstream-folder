@@ -19,6 +19,8 @@ http://localhost:8080/info
 
 http://localhost:8080/list
 
+http://localhost:8080/zip
+
 #### Actuator
 e.g.
 http://localhost:8080/actuator

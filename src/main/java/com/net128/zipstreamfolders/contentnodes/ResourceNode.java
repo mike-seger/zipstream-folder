@@ -3,7 +3,6 @@ package com.net128.zipstreamfolders.contentnodes;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
@@ -19,10 +18,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.io.Resources;
 
 public class ResourceNode extends ContentNode {
-	@JsonInclude(Include.NON_EMPTY)
-	public String path;	
-	public ResourceNode(String pkg, String resourcePattern) {
-		super("/");
+	private String path;	
+	public ResourceNode(String pkg, String resourcePattern, String rootName) {
+		super(rootName);
 		init(pkg, resourcePattern);
 	}
 	
@@ -31,16 +29,6 @@ public class ResourceNode extends ContentNode {
 		URL resource = getClass().getClassLoader().getResource(path);
 		Resources.copy(resource, os);
 		return this;
-	}
-	
-	@JsonProperty
-	@JsonInclude(Include.NON_EMPTY)
-	public String getData() throws IOException {
-		if(hasData()) {
-			URL resource = getClass().getClassLoader().getResource(path);
-			return Resources.toString(resource, StandardCharsets.UTF_8);
-		}
-		return null;
 	}
 	
 	@JsonProperty
@@ -59,7 +47,7 @@ public class ResourceNode extends ContentNode {
 		this.path=path;
 	}
 	
-	private String init(String pkg, String resourcePattern) {
+	private void init(String pkg, String resourcePattern) {
 		Reflections reflections = new Reflections(pkg, new ResourcesScanner());
 		Set<String> paths = new TreeSet<>(reflections.getResources(Pattern.compile(resourcePattern)));
 		Map<String, ContentNode> folderNodes = new TreeMap<>();
@@ -71,11 +59,9 @@ public class ResourceNode extends ContentNode {
 			ContentNode c=folderNodes.values().iterator().next();
 			children=c.children;
 			children.values().forEach(ch -> ch.parent=this);
-
 		} else {
 			folderNodes.values().forEach(c -> add(c.getName(), c));
 		}
-		return "/";
 	}
 	
 	private static String getParent(String path) {

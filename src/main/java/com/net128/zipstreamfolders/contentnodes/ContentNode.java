@@ -2,6 +2,8 @@ package com.net128.zipstreamfolders.contentnodes;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -13,13 +15,17 @@ import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.collect.Iterables;
 
 public class ContentNode implements Iterable<ContentNode> {
 	@JsonIgnore
 	private String name;
+	
+	@JsonIgnore
+	private LocalDateTime defaultDateTime = LocalDateTime.of(2000, Month.JANUARY, 1, 0, 0, 0); 
+
 	@JsonIgnore
 	public ContentNode parent;
 	protected ContentNode() {}
@@ -63,6 +69,12 @@ public class ContentNode implements Iterable<ContentNode> {
 			c=c.parent;
 		}
 		return path;
+	}
+	
+	@JsonProperty("created")
+	@JsonInclude(Include.NON_EMPTY)
+	public LocalDateTime getCreated() {
+		 return defaultDateTime;
 	}
 	
 	public String getName() {

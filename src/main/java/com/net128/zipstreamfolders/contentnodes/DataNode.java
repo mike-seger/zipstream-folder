@@ -4,10 +4,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class DataNode extends ContentNode {
 	private byte [] data;
 	public DataNode(String name, byte [] data) {
@@ -29,12 +25,12 @@ public class DataNode extends ContentNode {
     	return data!=null;
     }
 	
-	@JsonProperty
-	@JsonInclude(Include.NON_EMPTY)
-	public String getData() throws IOException {
-		if(hasData()) {
-			return new String(data, StandardCharsets.UTF_8);
-		}
-		return null;
-	}
+//	@JsonProperty
+//	@JsonInclude(Include.NON_EMPTY)
+//	public String getData() throws IOException {
+//		if(hasData()) {
+//			return new String(data, StandardCharsets.UTF_8);
+//		}
+//		return null;
+//	}
 }
