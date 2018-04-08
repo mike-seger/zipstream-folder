@@ -2,20 +2,18 @@
 An example Spring Boot Application providing an end-point, which streams arbitrary content repository trees as a ZIP file.
 
 ## Development
-
 ### Run the application
 ```bash
 ./gradlew bootRun
 ```
-
 ### Build runnable jar (in build//libs/zipstream-folders-*.jar)
 ```bash
 ./gradlew clean build
 ```
-
 ### Run runnable jar
+```bash
 java -jar build/libs/zipstream-folders-*.jar
-
+```
 ## API
 
 ### End-Points
