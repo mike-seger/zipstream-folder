@@ -45,8 +45,8 @@ public class ZipServiceTest {
 			}
 			logger.info("Created zip file: {}", zipFile.getAbsolutePath());
 			assertThat(zipFile.exists());
-			assertThat(zipFile.length()).isEqualTo(2084L);
-			assertThat(md5(zipFile)).isEqualTo("2CF57900EF6A49209DD8F905818EA319");
+			assertThat(zipFile.length()).isEqualTo(2114L);
+			assertThat(md5(zipFile)).isEqualTo("01ED73588000A2F0AA4FED1DC2201EF3");
 		} finally {
 			zipFile.delete();			
 		}

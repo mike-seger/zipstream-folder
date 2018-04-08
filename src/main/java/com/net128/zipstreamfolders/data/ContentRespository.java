@@ -12,7 +12,7 @@ public class ContentRespository {
 	private static ContentNode contentNode;
 	static {
 		contentNode =
-			new ContentNode("c0").add(
+			new ContentNode("content").add(
 				new ContentNode("c1"),
 				new ContentNode("c2").add(
 					new ContentNode("c2.1").add(

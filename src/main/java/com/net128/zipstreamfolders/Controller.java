@@ -35,7 +35,7 @@ public class Controller {
 	public void zip(HttpServletResponse response) throws IOException {
 	    ContentNode contentNode=contentRespository.getContentNode();
 	    response.setStatus(HttpServletResponse.SC_OK);
-	    response.addHeader("Content-Disposition", "attachment; filename=\""+contentNode.name()+".zip\"");
+	    response.addHeader("Content-Disposition", "attachment; filename=\""+contentNode.name().replaceAll("[_.-/]*$", "")+".zip\"");
 	    zipService.zipStream(contentNode, response.getOutputStream());
 	}
 	
