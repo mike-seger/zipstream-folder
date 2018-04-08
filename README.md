@@ -5,7 +5,7 @@
 ### Run the application
 ./gradlew bootRun
 
-### Build runnable jar (in build//libs/zipstream-folders-*.jar
+### Build runnable jar (in build//libs/zipstream-folders-*.jar)
 ./gradlew clean build
 
 ### Run runnable jar
