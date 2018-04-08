@@ -99,7 +99,7 @@ public class ContentNode implements Iterable<ContentNode> {
 	@Override
 	public Iterator<ContentNode> iterator() {
 		List<Iterable<ContentNode>> iterables=new ArrayList<>();
-		if(!isStucture()) {
+		if(!isStucture() && getPath()!=null) {
 			iterables.add(Collections.singletonList(this));
 		}
 		if(children!=null) {

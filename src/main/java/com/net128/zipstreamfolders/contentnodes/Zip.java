@@ -32,9 +32,6 @@ public class Zip {
 			ZipOutputStream zos = new ZipOutputStream(fos);
 
 			for (ContentNode c : contentNode) {
-				if(c.getPath()==null) {
-					continue;
-				}
 				System.out.println("Adding file: " + c.getPath());
 				zos.putNextEntry(new ZipEntry(c.getPath()));
 				c.streamData(zos);
