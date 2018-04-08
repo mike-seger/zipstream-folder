@@ -40,6 +40,6 @@ public class Controller {
 	}
 	
 	public static class Info {
-		public String message="Hello";
+		public String message="An example Spring Boot Application providing an endpoint, which streams arbitrary content repository trees as a ZIP file.";
 	}
 }

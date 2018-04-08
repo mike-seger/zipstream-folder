@@ -1,12 +1,18 @@
 # zipstream-folders
 
+An example Spring Boot Application providing an endpoint which streams arbitrary content repository trees as a ZIP file.
+
 ## Development
 
 ### Run the application
+```bash
 ./gradlew bootRun
+```
 
 ### Build runnable jar (in build//libs/zipstream-folders-*.jar)
+```bash
 ./gradlew clean build
+```
 
 ### Run runnable jar
 java -jar build/libs/zipstream-folders-*.jar
@@ -15,17 +21,17 @@ java -jar build/libs/zipstream-folders-*.jar
 
 ### Endpoints
 
-http://localhost:8080/info
+[Info](http://localhost:8080/info)
 
-http://localhost:8080/list
+[List](http://localhost:8080/list)
 
-http://localhost:8080/zip
+[Zip](http://localhost:8080/zip)
 
 #### Actuator
 e.g.
-http://localhost:8080/actuator
+[Actuator](http://localhost:8080/actuator)
 
-http://localhost:8080/actuator/health
+[Health](http://localhost:8080/actuator/health)
 
 for a complete list see: 
-https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html
+[Spring IO/Production Ready Endpoints](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html)
