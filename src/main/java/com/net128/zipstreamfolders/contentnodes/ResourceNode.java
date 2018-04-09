@@ -22,6 +22,7 @@ public class ResourceNode extends ContentNode {
 	public ResourceNode(String pkg, String resourcePattern, String rootName) {
 		super(rootName);
 		init(pkg, resourcePattern);
+		path=null;
 	}
 	
 	@Override

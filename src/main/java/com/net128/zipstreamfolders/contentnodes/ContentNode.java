@@ -54,7 +54,7 @@ public class ContentNode implements Iterable<ContentNode> {
 	@JsonProperty("path")
 	@JsonInclude(Include.NON_EMPTY)
 	public String getFullPath() {
-		if(isStucture()) {
+		if(isStucture() || !hasData()) {
 			return null;
 		}
 		return getPath();
@@ -74,7 +74,10 @@ public class ContentNode implements Iterable<ContentNode> {
 	@JsonProperty("created")
 	@JsonInclude(Include.NON_EMPTY)
 	public LocalDateTime getCreated() {
-		 return defaultDateTime;
+		if(isStucture() || !hasData()) {
+			return null;
+		}
+		return defaultDateTime;
 	}
 	
 	public String getName() {
